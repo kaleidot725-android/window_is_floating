@@ -82,6 +82,30 @@ WindowIsFloating を False にするとこのようにいつもどおりの Acti
 いろいろ試して見た感じだと layout_width や layout_height を変更しても View ラップされてしまう挙動はかわらないみたいです。どうしても View がラップされた表示を避けたい場合には、 android:minWidth と android:minHeight で最小の大きさを定義してやると上手くいきそうです。
 
 
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="200dp"
+    android:minHeight="200dp"
+    android:background="#80ff0000"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+
 | minWidht minHeight なし | minWidht minHeight あり |
 | ------- | ------- |
 | ![clipboard.png](myzpK8due-clipboard.png) | ![clipboard.png](Mv9sahpgh-clipboard.png) |
